@@ -7,26 +7,31 @@
     <title>gugudan</title>
 </head>
 <body>
-    <h1>if문 git연습</h1>
-    출력할 단 : <input type="text" id="num"/>
-    <button onclick="display()">확인</button>
+    <h1>구구단 함수사용</h1>
     <script>
-        function display() {
-            var strN = document.getElementById('num').value;
-            var n = Number(strN);
+        function gugudan(x){
+            var result = [];
+            for(var i = 1; i <= 9; i++){
+                result[i] = x * i;
+            }
+            return result;
+        }
 
-            if(n < 2 || n > 9) {
-                document.write("2~9 입력하세요");
-            } else {
-                document.write("<h2>" + n + "단</h2>");
-                for(var i = 1; i <= 9; i++) {
-                    var ret = n * 1;
-                    document.write(n + " * " + i + " = " + ret + "<br/>");
-                }
+        function printResult(number, result){
+            console.log(`${number} 단`)
+            for(var i = 1; i <= 9; i++){
+                console.log(`${number} * ${i} = ${number * i}`)
             }
         }
-    
 
+        function main() {
+            console.log("main 함수 실행");
+            for(var n = 2; n <= 9; n++){
+                var result = gugudan(n);
+                printResult(n, result);
+            }
+        }
+        main();
     </script>
 </body>
 </html>
