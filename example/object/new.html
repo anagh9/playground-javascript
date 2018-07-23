@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>생성자함수</title>
+</head>
+<body>
+  <script>
+    var Human = function(name, hp, pow) {
+      this.name = name;
+      this.hp = hp;
+      this.pow = pow;
+      this.attack = function(target) {
+        console.log(`${this.name}이 ${target.name}을 공격했다.`)
+        target.hp -= this.pow;
+      }
+      this.show = function(){
+        console.log("[%s] %d", this.name, this.hp)
+      }
+      this.eat = function(food) {
+        this.hp += food.energy;
+      }
+    }
+
+    var Food = function(name, energy) {
+      this.name = name;
+      this.energy = energy;
+      this.feed = function(human){
+        human.hp += this.energy;
+      }
+    }
+
+    var p1 = new Human('honux', 100, 10);
+    var p2 = new Human('crong', 200, 1);
+    var p3 = new Human('pobi', 50, 30);
+    var d = new Food('doughnut', 20);
+
+    p1.eat(d);
+    d.feed(p2);
+
+  </script>
+</body>
+</html>

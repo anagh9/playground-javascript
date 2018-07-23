@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>prototype</title>
+</head>
+<body>
+  <h1>프로토타입</h1>
+  <script>
+    var Human = function(name, atk) {
+      this.name = name;
+      this.hp = 100;
+      this.pow = atk;
+    }
+
+    Human.prototype.attack = function(target) {
+      target.hp -= this.pow;
+    }
+    
+    var p1 = new Human('honux', 10);
+
+    p1.attack(p1);
+
+  </script>
+</body>
+</html>

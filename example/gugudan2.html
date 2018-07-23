@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <div id="test"></div>
+    <input type='text' id='input1'><button id='btn1' onclick="read()">click</button>
+  
+    <script> 
+        var read = function() {
+            var input = document.getElementById('input1');
+            console.log(input.value.split(","));
+        };       
+
+        var el = document.getElementById('test');
+        var menu = document.createElement('ul');  
+        menu.id = 'menupan';
+
+        var item1 = document.createElement('li');
+        item1.id = 'menu1';
+        item1.innerHTML = "설렁탕";
+
+        var item2 = document.createElement('li');
+        item2.id = 'menu2';
+        item2.innerHTML = "추어탕";
+
+        menu.appendChild(item1);  
+        menu.appendChild(item2);  
+
+        el.appendChild(menu);
+    </script>
+</body>
+</html>
