@@ -12,30 +12,20 @@ var output = {
 var clickNum = function(event) {
   var str = event.target.innerHTML;
   switch(str) {
-    case 'BS':
-      if(input.array.length <= 1){
-        input.array = [0]
-      } else {
-        input.array.pop()
-      }   
+    case 'BS':  
+      input.array.pop()    
       break;
     case '+':
-      input.array.push(' + ');
-      break;
     case '-':
-      input.array.push(' - ');
-      break;
     case '*':
-      input.array.push(' * ');
-      break;
     case '/':
-      input.array.push(' / ');
+      input.array.push(' ' + str + ' ');
       break;
     default:
       input.array.push(str);
   }
 
-  output.text.innerHTML = input.getInput();
+  output.text.innerHTML = input.array.length <= 0 ? "Empty" : input.getInput();
   
   console.log("clickNum");
   console.log(input.getInput())
