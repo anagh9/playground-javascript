@@ -1,7 +1,9 @@
-var main = function(){
-  console.log("계산기");
-  var out = document.getElementById('output');
-  out.innerHTML = "계산기 구현하기"
+var clickNum = function(event) {
+  console.log("clickNum");
+  console.log(event.target.innerHTML)
 }
 
-main();
+var clickOp = function(event) {
+  console.log("clickOp")
+  console.log(event.target.innerHTML)
+}
