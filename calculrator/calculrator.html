@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>calculrator</title>
+  <style>
+    body > div {max-width: 480px;}
+    #output {
+      background-color: #ccc;
+      width: 403px;
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 20px;
+      color: #fff;
+    }
+    button {
+      font-size: 20px;
+      background-color: #eee;
+      width: 100px;
+      margin: 10px 0 0 10px;
+      padding: 10px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>계산기</h1>
+  <div>
+    <div id="output">0</div>
+    <div id="but1">
+      <button id="7" onclick="clickNum(event)">7</button>
+      <button id="8" onclick="clickNum(event)">8</button>
+      <button id="9" onclick="clickNum(event)">9</button>
+      <button id="div" onclick="clickNum(event)">/</button>
+    </div>
+    <div id="but2">
+      <button id="4" onclick="clickNum(event)">4</button>
+      <button id="5" onclick="clickNum(event)">5</button>
+      <button id="6" onclick="clickNum(event)">6</button>
+      <button id="mul" onclick="clickNum(event)">*</button>
+    </div>
+    <div id="but3">
+      <button id="1" onclick="clickNum(event)">1</button>
+      <button id="2" onclick="clickNum(event)">2</button>
+      <button id="3" onclick="clickNum(event)">3</button>
+      <button id="sub" onclick="clickNum(event)">-</button>
+    </div>
+    <div id="but4">
+      <button id="del" onclick="clickNum(event)">BS</button>
+      <button id="0" onclick="clickNum(event)">0</button>
+      <button id="eq" onclick="showResult(event)">=</button>
+      <button id="plus" onclick="clickNum(event)">+</button>
+    </div>
+  </div>
+  <script src="./calculrator.js"></script>
+</body>
+</html>
