@@ -18,94 +18,16 @@
 <body>
   <h1>단어 움직이기 퍼즐</h1>
   <div>
+    <p id="progress"></p>
     <p id="word1"></p>
     <div id="word2"></div>
     <div id="btns">
-      <button onclick="swap(event)">뒤집기</button>
-      <button onclick="rshift(event)">오른쪽 밀어내기</button>
-      <button onclick="lshift(event)">왼쪽 밀어내기</button>
+      <button onclick="swap()">뒤집기</button>
+      <button onclick="rshift()">오른쪽 밀어내기</button>
+      <button onclick="lshift()">왼쪽 밀어내기</button>
     </div>
     <p id="check">일치</p>
   </div>
-
-  <script>
-    var word1 = document.getElementById('word1')
-    var word2 = document.getElementById('word2');
-    var check = document.getElementById('check');
-
-    var words = 'apple,linux,javascript,tutorial,codesquad,baby,girlfriend,legrnd'.split(',');
-
-
-    var game = {};
-    game.choice = function() {
-      var idx = Math.floor(Math.random() * words.length);
-      return words[idx];
-    }
-    var answer = game.choice();
-    word1.innerHTML = answer;
-
-    game.word = answer.split('');
-    game.btns = [];
-
-    game.updateDisplay = function() {
-      if(answer === game.word.join('')) {
-        check.innerHTML = '일치';
-      } else {
-        check.innerHTML = '불일치';
-      }
-    }
-
-    for (var i = 0; i < answer.length; i++) {
-      var btn = document.createElement('button');
-      btn.innerHTML = answer[i];
-      word2.appendChild(btn);
-      game.btns.push(btn);
-    }
-
-    game.copyBtnText = function() {
-      for(var i = 0; i < this.word.length; i++) {
-        this.btns[i].innerHTML = this.word[i];
-      }
-    }
-
-    var swap = function(event) {
-      var temp = [];
-      while (game.word.length != 0) {
-        var s = game.word.pop();
-        temp.push(s);
-      }
-
-      game.word = temp;
-      game.copyBtnText();
-      game.updateDisplay();
-    }
-
-
-    var rshift = function(event) {
-      var s = game.word.pop();
-      game.word.unshift(s);
-      game.copyBtnText();
-      game.updateDisplay();
-    }
-
-    var lshift = function(event) {
-      var s = game.word.shift();
-      game.word.push(s);
-      game.copyBtnText();
-      game.updateDisplay();
-    }
-
-    var toggle = Math.floor(Math.random() * 2) === 0;
-    if(toggle) {
-      swap();
-    }
-
-    var n = Math.floor(Math.random() * answer.length);
-
-    for (var i = 0; i < n; i++) {
-      rshift();
-    }
-  </script>
 
   <script src="./main.js"></script>
 </body>
