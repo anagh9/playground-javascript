@@ -1,4 +1,4 @@
-# ES6
+# ES6+
 
 ## ES2015
 
@@ -8,10 +8,10 @@
 - startsWith(str)
 - endsWith(str)
 - includes(str)
-`
+```javascript
 let str = "hrllo world ! ^^ ~~";
 let matchstr = "^ ~~";
 console.log(str.startWith(matchstr));
 console.log(str.endWith(matchstr));
 console.log("include test ", str.inclides("^^^"));
-`
+```
