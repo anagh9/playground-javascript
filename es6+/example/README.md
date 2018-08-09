@@ -6,6 +6,7 @@
 - let
 - const
 
+
 ### String : new string method
 - startsWith(str)
 - endsWith(str)
@@ -18,6 +19,7 @@ console.log(str.startWith(matchstr));
 console.log(str.endWith(matchstr));
 console.log("include test ", str.inclides("^^^"));
 ```
+
 
 ### Array
 - for of
@@ -67,5 +69,24 @@ function sum(a, b, c) {
 let pre3 = [100, 200, 300];
 console.log(sum.apply(null, pre3)); //600
 console.log(sum(...pre3)); //600
+```
 
+- from
+```javascript
+function addMark() {
+  let newData = [];
+  let newArray = Array.from(arguments);
+
+  for(let i = 0; i < arguments.length; i++) {
+    newData.push(arguments[i] + "!");
+  }
+
+  let newData2 = newArray.map(function(value){
+    return value + "!";
+  })
+
+  console.log(newData, newData2);
+}
+
+addMark(1, 2, 3, 4, 5); //["1!", "2!", "3!", "4!", "5!"]
 ```
