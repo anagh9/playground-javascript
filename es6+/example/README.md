@@ -23,6 +23,7 @@ console.log("include test ", str.inclides("^^^"));
 - for of
 ```javascript
 var data = [1, 2, undefined, NaN, null, ""];
+
 // for
 for (var i = 0; i < data.length; i++) {
   console.log(i);
@@ -47,4 +48,24 @@ var str = "hello world!!!";
 for(let value of str) {
   console.log(value);
 }
+```
+
+- spread operator : 펼침연산자
+```javascript
+// ...연산자 : 참조가 아닌 복사를 하게 된다.
+let pre = ["apple", "orange", 100];
+let newDate = [...pre];
+console.log(pre === newData); //false
+
+let pre2 = [100, 200, "hello", null];
+let newData2 = [0, 1, 2, 3, ...pre2, 4];
+console.log(newData2); //[0, 1, 2, 3, 100, 200, "hello", null, 4]
+
+function sum(a, b, c) {
+  return a+b+c;
+}
+let pre3 = [100, 200, 300];
+console.log(sum.apply(null, pre3)); //600
+console.log(sum(...pre3)); //600
+
 ```
