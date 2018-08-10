@@ -14,14 +14,20 @@
     <li>strawberry</li>
   </ul>
   <script>
+    /**
+     * filter, includes, from을 사용해서 문자열 'e'가 포함된 
+     * 노드로 구성된 배열을 만들어서 반환하기
+    **/
+
     function print() {
-      /**
-       * filter, includes, from을 사용해서 문자열 'e'가 포함된 
-       * 노드로 구성된 배열을 만들어서 반환하기
-      **/
+      let list = document.querySelectorAll('li');
+      let listArray = Array.from(list);
+      //console.log(toStirng.call(listArray))
+      let data = listArray.filter((v) => v.innerHTML.includes('e'));
+      return data
     }
 
-    print();
+    console.log(print());
   </script>
 </body>
 </html>
