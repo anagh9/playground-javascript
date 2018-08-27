@@ -116,13 +116,15 @@ console.log(obj.getName());
 ```
 
 ### Destructuring
+- Array
 ```javascript
-//array
 let data = ["crong", "honux", "jk"];
 let [jisu,,jung] = data;
 console.log(jisu, jung);
+```
 
-//object
+- Object
+```javascript
 let obj = {
   name: 'crong',
   address: 'korea',
@@ -131,8 +133,10 @@ let obj = {
 let {name, age} = obj;
 let {name:myName, age:myAge} = obj;
 console.log(myName, myAge);
+```
 
-//json pasing
+- JSON parsing
+```javascript
 let news = [
   {
     "title": "sbs",
@@ -157,8 +161,10 @@ let news = [
 //let {title, imgurl} = mbc;
 let [, {title, imgurl}] = news;
 console.log(title, imgurl);
+```
 
-//Event object
+- Event object
+```javascript
 document.querySelector('div').addEventListener('click', function({type, target}) {
   console.log(type, target.innerText);
 })
