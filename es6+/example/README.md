@@ -90,3 +90,76 @@ function addMark() {
 
 addMark(1, 2, 3, 4, 5); //["1!", "2!", "3!", "4!", "5!"]
 ```
+
+### Object
+```javascript
+function getObj() {
+  let name = "crong";
+  
+  const getName = function(){
+    return name;
+  }
+  
+  const setName = function(newname) {
+    name = newname;
+  }
+  
+  const printName = function(){
+    console.log(name);
+  }
+  
+  return {getName, setName}
+}
+
+let obj = getObj();
+console.log(obj.getName());
+```
+
+### Destructuring
+```javascript
+//array
+let data = ["crong", "honux", "jk"];
+let [jisu,,jung] = data;
+console.log(jisu, jung);
+
+//object
+let obj = {
+  name: 'crong',
+  address: 'korea',
+  age: 10
+}
+let {name, age} = obj;
+let {name:myName, age:myAge} = obj;
+console.log(myName, myAge);
+
+//json pasing
+let news = [
+  {
+    "title": "sbs",
+    "imgurl": "www.snaps.com",
+    "newslist": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  {
+    "title": "mbc",
+    "imgurl": "www.ohprint.me",
+    "newslist": [
+      "aa",
+      "bb",
+      "cc"
+    ]
+  }
+];
+//let [, mbc] = news;
+//let {title, imgurl} = mbc;
+let [, {title, imgurl}] = news;
+console.log(title, imgurl);
+
+//Event object
+document.querySelector('div').addEventListener('click', function({type, target}) {
+  console.log(type, target.innerText);
+})
+```
