@@ -169,3 +169,44 @@ document.querySelector('div').addEventListener('click', function({type, target})
   console.log(type, target.innerText);
 })
 ```
+
+### Set
+- 중복 없이 유일한 값을 저장하려고 할때, 이미 존재하는지 체크할 때 유용.
+
+```javascript
+let mySet = new Set();
+console.log(toString.call(mySet));
+
+mySet.add("crong");
+mySet.add("hary");
+mySet.add("crong");
+
+mySet.forEach(function(v){
+  console.log(v);
+})
+
+console.log(mySet.has("crong"));
+mySet.delete("crong");
+```
+
+### WeakSet
+- 참조를 가지고 있는 객체만 저장이 가능하다.
+
+```javascript
+let arr = [1, 2, 3, 4];
+let arr2 = [5, 6, 7, 8];
+let obj = {arr, arr2};
+let ws = new WeakSet();
+
+ws.add(arr);
+ws.add(111);//invaled
+ws.add("111");//invaled
+ws.add(function(){});
+
+ws.add(arr2);
+ws.add(obj);
+
+arr = null;
+console.log(ws.has(arr))
+
+```
