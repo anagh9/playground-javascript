@@ -191,6 +191,7 @@ mySet.delete("crong");
 
 ### WeakSet
 - 참조를 가지고 있는 객체만 저장이 가능하다.
+- 객체 형태를 중복없이 저장하려고 할때 유용하다.
 
 ```javascript
 let arr = [1, 2, 3, 4];
@@ -208,5 +209,43 @@ ws.add(obj);
 
 arr = null;
 console.log(ws.has(arr))
+```
 
+### Map
+- Array => Set, WeakSet
+- Object => Map, WeakMap
+- Map은 key value 구조
+```javascript
+let wm = new WeakMap();
+let myfun = function(){};
+//함수가 얼마나 실행됐는지 알려고 할때.
+
+wm.set(myfun, 0);
+console.log(wm);
+
+let count = 0;
+for(let i=0; i<10; i++){
+  count = wm.get(myfun);
+  count++;
+  wm.set(myfun, count);
+}
+
+console.log(wm.get(myfun));
+```
+
+```javascript
+//WeakMap을 이용한 private variable 
+const wm = new WeakMap();
+
+function Area(height, width) {
+  wm.set(this, {height, width});
+}
+
+Area.prototype.getArea = function() {
+  const {height, width} = wm.get(this);
+  return height * width;
+}
+
+let myarea = new Area(10, 20);
+console.log(myarea.getArea());
 ```
