@@ -15,3 +15,22 @@ function getRandomNumber(maxNumber) {
   //랜덤한 유일한 숫자값을 추출
 }
 ```
+
+```javascript
+const SETTING = {
+  name: 'LUCKY LOTTO',
+  count: 6,
+  maxNumber: 45
+}
+let lotteSet = new Set();
+
+function getRandomNumber(maxNumber) {
+  return Math.floor(Math.random()*maxNumber)+1;
+}
+
+for (let i = 0; i < SETTING.count; i++){
+  lotteSet.add(getRandomNumber(SETTING.maxNumber));
+}
+
+console.log(lotteSet);
+```
