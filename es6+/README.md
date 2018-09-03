@@ -378,3 +378,62 @@ function checkNum2(...argArray) {
 
 const result = checkNum(10, 2, 3, 4, 5, '55');
 ```
+
+
+## 객체
+
+### class를 통한 객체생성
+```javascript
+//기존
+function Health(name) {
+  this.name = name;
+}
+
+Health.prototype.showHealth = function() {
+  console.log(this.name + '님 안녕하세요!');
+}
+
+const h = new Health('crong');
+h.showHealth();
+
+//ES6+
+class Health {
+  constructor(name, lastTime) {
+    this.name = name;
+    this.lastTime = lastTime;
+  }
+  
+  showHealth() {
+    console.log('hello ' + this.name);
+  }
+}
+
+const myHealth = new Health('crong');
+myHealth.showHealth();
+```
+
+### Object assign 
+```javascript
+const healthObj = {
+  showHealth: function() {
+    console.log('health Time: ' + this.healthTime);
+  }
+}
+const myHealth = Object.create(healthObj);
+myHealth.healthTime = '11:20';
+myHealth.name = 'crong';
+console.log(myHealth);
+
+const healthObj = {
+  showHealth: function() {
+    console.log('health Time: ' + this.healthTime);
+  }
+}
+
+const myHealth = Object.assign(Object.create(healthObj), {
+  name: 'crong',
+  lastTime: '11:20'
+});
+
+console.log(myHealth);
+```
