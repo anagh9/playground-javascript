@@ -1,13 +1,11 @@
 # ES6+
 
-## ES2015
-
-### scope : block scope
+## scope : block scope
 - let
 - const
 
 
-### String : new string method
+## String : new string method
 - startsWith(str)
 - endsWith(str)
 - includes(str)
@@ -21,8 +19,8 @@ console.log("include test ", str.inclides("^^^"));
 ```
 
 
-### Array
-- for of
+## Array
+### for of
 ```javascript
 var data = [1, 2, undefined, NaN, null, ""];
 
@@ -52,7 +50,7 @@ for(let value of str) {
 }
 ```
 
-- spread operator : 펼침연산자
+### spread operator : 펼침연산자
 ```javascript
 // ...연산자 : 참조가 아닌 복사를 하게 된다.
 let pre = ["apple", "orange", 100];
@@ -71,7 +69,7 @@ console.log(sum.apply(null, pre3)); //600
 console.log(sum(...pre3)); //600
 ```
 
-- from
+### from
 ```javascript
 function addMark() {
   let newData = [];
@@ -91,7 +89,7 @@ function addMark() {
 addMark(1, 2, 3, 4, 5); //["1!", "2!", "3!", "4!", "5!"]
 ```
 
-### Object
+## Object
 ```javascript
 function getObj() {
   let name = "crong";
@@ -115,15 +113,15 @@ let obj = getObj();
 console.log(obj.getName());
 ```
 
-### Destructuring
-- Array
+## Destructuring
+### Array
 ```javascript
 let data = ["crong", "honux", "jk"];
 let [jisu,,jung] = data;
 console.log(jisu, jung);
 ```
 
-- Object
+### Object
 ```javascript
 let obj = {
   name: 'crong',
@@ -135,7 +133,7 @@ let {name:myName, age:myAge} = obj;
 console.log(myName, myAge);
 ```
 
-- JSON parsing
+### JSON parsing
 ```javascript
 let news = [
   {
@@ -163,12 +161,14 @@ let [, {title, imgurl}] = news;
 console.log(title, imgurl);
 ```
 
-- Event object
+### Event object
 ```javascript
 document.querySelector('div').addEventListener('click', function({type, target}) {
   console.log(type, target.innerText);
 })
 ```
+
+## Set & Map
 
 ### Set
 - 중복 없이 유일한 값을 저장하려고 할때, 이미 존재하는지 체크할 때 유용.
@@ -233,6 +233,7 @@ for(let i=0; i<10; i++){
 console.log(wm.get(myfun));
 ```
 
+### WeakMap
 ```javascript
 //WeakMap을 이용한 private variable 
 const wm = new WeakMap();
@@ -250,9 +251,11 @@ let myarea = new Area(10, 20);
 console.log(myarea.getArea());
 ```
 
-### Template
+## Template
 - json으로 응답을 받고, javascript object로 변환한 후에 어떠한 데이처리 조작을 한 후에 dom에 추가
 - 데이터 + HTML 문자열의 결합이 필요하기 떄문에.
+
+### Template
 ```javascript
 const data = [
   {
@@ -270,7 +273,8 @@ const data = [
     items: ['americano', 'latte']
   }
 ]
-//Tagged template loterals
+
+### Tagged template literals
 function fn(tags, name, items) {
   if(typeof items === "undefined") {
     items = '<span style="color:red">주문가능한 상품이 없습니다</span>';
@@ -285,4 +289,90 @@ data.forEach((v) => {
   console.log(template);
 })
 
+```
+
+## function
+
+### arrow function
+```javascript
+//arrow 예제
+let newArr = [1, 2, 3, 4, 5].map(function(v, i, o){
+  return v * 2;
+})
+
+let newArr2 = [1, 2, 3, 4, 5].map((v) => v * 2);
+
+console.log(newArr, newArr2)
+```
+
+### this context of Arrow function
+```javascript
+//arrow function은 this context 유지
+const myObj = {
+  runTimeout() {
+    setTimeout(function() {
+      console.log(this === window);
+      this.printData();
+    }.bind(this), 200);
+  },
+  
+  printData() {
+    console.log('hi');
+  }
+}
+myObj.runTimeout();
+
+const myObj1 = {
+  runTimeout() {
+    setTimeout(() => {
+      console.log(this === window);
+      this.printData();
+    }, 200);
+  },
+  
+  printData() {
+    console.log('hi');
+  }
+}
+myObj1.runTimeout();
+
+//with dom
+const el = document.querySelector('p');
+
+const myObj = {
+  register() {
+    el.addEventListener('click', (evt) => {
+      this.printData(evt.target);
+    });
+  },
+      
+  printData(el) {
+    console.log('clicked!', el.innerText);
+  }
+}
+
+myObj.register();
+```
+
+### default parameters
+```javascript
+function sum(value, size={value:1}) {
+  return value + size.value;
+}
+
+console.log(sum(3));
+```
+
+### rest parameters
+```javascript
+function checkNum1() {
+  const argArray = Array.prototype.slice.call(arguments);
+  const result = argArray.every((v) => typeof v === 'number');
+}
+
+function checkNum2(...argArray) {
+  const result = argArray.every((v) => typeof v === 'number');
+}
+
+const result = checkNum(10, 2, 3, 4, 5, '55');
 ```
