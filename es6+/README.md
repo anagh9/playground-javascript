@@ -249,3 +249,40 @@ Area.prototype.getArea = function() {
 let myarea = new Area(10, 20);
 console.log(myarea.getArea());
 ```
+
+### Template
+- json으로 응답을 받고, javascript object로 변환한 후에 어떠한 데이처리 조작을 한 후에 dom에 추가
+- 데이터 + HTML 문자열의 결합이 필요하기 떄문에.
+```javascript
+const data = [
+  {
+    name: 'coffee-bean',
+    order: true,
+    items: ['americano', 'milk', 'green-tea']
+  },
+  {
+    name: 'starbucks',
+    order: false
+  },
+  {
+    name: 'coffee-king',
+    order: true,
+    items: ['americano', 'latte']
+  }
+]
+//Tagged template loterals
+function fn(tags, name, items) {
+  if(typeof items === "undefined") {
+    items = '<span style="color:red">주문가능한 상품이 없습니다</span>';
+  }
+  return(tags[0] + name + tags[1] + items + tags[2])
+}
+
+data.forEach((v) => {
+  const template = fn`<h1>Welcome ${v.name}!!</h1>
+<h4>주문가능항목</h4><div>${v.items}</div>`;
+  document.querySelector('#message').innerHTML += template;
+  console.log(template);
+})
+
+```
