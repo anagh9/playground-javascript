@@ -273,8 +273,10 @@ const data = [
     items: ['americano', 'latte']
   }
 ]
+```
 
 ### Tagged template literals
+```javascript
 function fn(tags, name, items) {
   if(typeof items === "undefined") {
     items = '<span style="color:red">주문가능한 상품이 없습니다</span>';
