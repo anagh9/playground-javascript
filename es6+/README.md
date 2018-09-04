@@ -437,3 +437,69 @@ const myHealth = Object.assign(Object.create(healthObj), {
 
 console.log(myHealth);
 ```
+
+```javascript
+//immuterble
+const previousObj = {
+  name: 'crong',
+  lastTime: '11:20'
+}
+
+const myAssign = Object.assign({}, previousObj, {});
+console.log(previousObj === myAssign)//false
+console.log(previousObj.name === myAssign.name)//true
+
+const myHealth = Object.assign({}, previousObj, {
+  "lastTime": "12:30",
+  "age": 99
+});
+console.log(myHealth);
+```
+
+### setPrototypeOf
+```javascript
+const healthObj = {
+  showHealth: function() {
+    console.log('health Time: ' + this.healthTime);
+  },
+  setHealth: function(newTime) {
+    this.healthTime = newTime;
+  }
+}
+
+const newObj = Object.setPrototypeOf({
+  name: 'crong',
+  lastTime: '11:20'
+}, healthObj);
+
+console.log(newObj);
+```
+```javascript
+//prototype chain
+
+//parent obj
+const healthObj = {
+  showHealth: function() {
+    console.log('health Time: ' + this.healthTime);
+  },
+  setHealth: function(newTime) {
+    this.healthTime = newTime;
+  }
+}
+
+//child obj
+const healthChildObj = {
+  getAge: function() {
+    return this.age;
+  }
+}
+
+const lastHealObj = Object.setPrototypeOf(healthChildObj, healthObj);
+
+const childObj = Object.setPrototypeOf({
+  age:22
+}, healthChildObj);
+
+childObj.setHealth("11:55");
+childObj.showHealth();
+```
