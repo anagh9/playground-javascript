@@ -503,3 +503,46 @@ const childObj = Object.setPrototypeOf({
 childObj.setHealth("11:55");
 childObj.showHealth();
 ```
+
+## module
+
+### import export
+```javascript
+//app.js
+import myLectures from './myLogger';
+import _ from './utility';
+_.log('test');
+
+const cs = new myLectures();
+_.log(`getTime ${cs.getTime()}`);
+
+
+// utility.js
+const _ = {
+  log(data) {
+    if(window.console) console.log(data);
+  }
+}
+
+export default _;
+
+
+//myLogger.js
+export default class myLectures {
+  constructor(props) {
+    this.lectures = ['java', 'ios'];
+  }
+
+  getLectures() {
+    return this.lectures;
+  }
+
+  getTime = () => {
+    return Data.now();
+  }
+
+  getCurrentHour = () => {
+    return (new Data).getHours();
+  }   
+}
+```
