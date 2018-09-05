@@ -546,3 +546,32 @@ export default class myLectures {
   }   
 }
 ```
+
+## Proxy
+
+### about Proxy
+- 어떤 오브젝트가 있을때 가로채서 다른작업을 할 수 있게 해줌.
+```javascript
+const myObj = {name:'crong'};
+const proxy = new Proxy(myObj, {});
+
+console.log(proxy === myObj) //false
+console.log(proxy.name === myObj.name) //true
+
+const proxy1 = new Proxy({
+  name:'crong',
+  changedValue: 0
+  }, {
+  get: function(target, property, receiver){
+    console.log('get value');
+    //return target[property];
+    //return (property in target) ? target[property] : 'anonymous';
+    return Reflect.get(target, property);
+  },
+  set: function(target, property, value){
+    console.log('set value');
+    target['changedValue']++;
+    target[property] = value;
+  }
+});
+```
