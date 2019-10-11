@@ -318,7 +318,7 @@ data.forEach((v) => {
 
 <br/>
 
-## function
+## Function
 
 ### arrow function
 ```javascript
@@ -406,7 +406,7 @@ const result = checkNum(10, 2, 3, 4, 5, '55');
 
 <br/>
 
-## 객체
+## Object
 
 ### class를 통한 객체생성
 ```javascript
@@ -500,6 +500,7 @@ const newObj = Object.setPrototypeOf({
 
 console.log(newObj);
 ```
+
 ```javascript
 //prototype chain
 
@@ -532,7 +533,7 @@ childObj.showHealth();
 
 <br/>
 
-## module
+## Module
 
 ### import export
 ```javascript
