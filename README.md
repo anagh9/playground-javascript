@@ -581,7 +581,6 @@ export default class myLectures {
 ## Proxy
 
 ### about Proxy
-- 어떤 오브젝트가 있을때 가로채서 다른작업을 할 수 있게 해줌.
 ```javascript
 const myObj = {name:'crong'};
 const proxy = new Proxy(myObj, {});
